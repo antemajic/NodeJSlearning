@@ -1,7 +1,7 @@
-var lodash = require('lodash');
-var fs = require('fs');
+let lodash = require('lodash');
+let fs = require('fs');
 const http = require('http');
-var config= require('config');
+const config= require('config');
 
 const request = require('requestretry');
 let movieSource = config.get('Movies.link');
@@ -22,7 +22,7 @@ request({
     json: true,
     maxAttempts: maxNumOfAttempts,  // (default) try 5 times 
     retryDelay: retryDelay , // (default) wait for 5s before trying again
-    retrySrategy: myRetryStrategy, // (default) retry on 5xx or network errors
+    retrySrategy: myRetryStrategy, // custom retry strategy which returns error on 404 or 502 
   }, function(err, response, body){
       let retryError = myRetryStrategy(err, response, body)
     if (retryError) { 
