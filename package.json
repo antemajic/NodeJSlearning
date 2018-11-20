@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node ./src/index.js",
+    "start:dev1": "set NODE_ENV=dev1&& node ./src/index.js",
+    "start:test1": "set NODE_ENV=test1&& node ./src/index.js"
   },
   "author": "Ante Majic",
   "license": "ISC",
@@ -16,5 +18,8 @@
     "requestretry": "^3.0.2",
     "retry": "^0.12.0",
     "retry-request": "^4.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0"
   }
 }

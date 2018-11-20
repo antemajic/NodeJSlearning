@@ -1,9 +1,14 @@
 {
-    "Movies": { 
-        "link": "http://www.omdbapi.com/?t=harry+potter&apikey=8bdbc1a5"
-    },
-    "retryConfiguration": {
-        "maxAttempts": 5, 
-        "retryDelay": 5000
-    }
+  "Movies": {
+    "link": "http://www.o2mdbapi.com/?t=harry+potter&apikey=8bdbc1a5"
+  },
+  "dev1": {
+    "maxAttempts": 5,
+    "retryDelay": 2000
+  },
+
+  "test1": {
+    "maxAttempts": 3,
+    "retryDelay": 3000
+  }
 }
