@@ -7,8 +7,7 @@ const request = require("request");
 const movieSource = config.get("configuration.link");
 const data = config.get('configuration');
 // Fetch data
-let iterations = 0; 
-if (iterations < data.maxAttempts){
+
 requestRetry(
   {
     url: movieSource,
@@ -24,13 +23,12 @@ requestRetry(
     }
 
     if (response) {
-      //console.log("The number of request attempts: ", body);
+      console.log("The number of request attempts: ", body);
       return body;
     }
   }
 );
-iterations ++; 
-}
+
 
 // post method
 request.post(
@@ -44,7 +42,7 @@ request.post(
     if (error) {
       return error;
     }
-    console.log('Data', body);
+    //console.log('Data', body);
     console.log('Post response', response.statusCode);
   }
 );
