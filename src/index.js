@@ -38,11 +38,14 @@ request.post(
     method: "POST",
     body: "Test for post request"
   },
-  function(error, response, body) {
+  (error, response, body) => {
     if (error) {
       return error;
     }
+    else {
+      console.log('Response posted', response.statusCode);
+    }
     //console.log('Data', body);
-    console.log('Post response', response.statusCode);
+
   }
 );
