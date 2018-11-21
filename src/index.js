@@ -1,19 +1,20 @@
-const http = require("http");
+
 const config = require("config");
 const helper = require("./helper.js");
 
 const requestRetry = require("requestretry");
 const request = require("request");
-const movieSource = config.get("Movies.link");
-const predefinedConfiguration = require("../config/config");
-
+const movieSource = config.get("configuration.link");
+const data = config.get('configuration');
 // Fetch data
+let iterations = 0; 
+if (iterations < data.maxAttempts){
 requestRetry(
   {
     url: movieSource,
     json: true,
-    maxAttempts: predefinedConfiguration.data.maxAttempts, // default number of request attempts
-    retryDelay: predefinedConfiguration.data.retryDelay, //  wait for 5 seconds before trying again
+    maxAttempts: data.maxAttempts, // default number of request attempts
+    retryDelay: data.retryDelay, //  wait for 5 seconds before trying again
     retryStrategy: helper.customErrorHandler // custom retry strategy which returns error on 404 or 502
   },
   (err, response, body) => {
@@ -23,17 +24,19 @@ requestRetry(
     }
 
     if (response) {
-      console.log("The number of request attempts: ", body);
+      //console.log("The number of request attempts: ", body);
       return body;
     }
   }
 );
+iterations ++; 
+}
 
 // post method
 request.post(
   {
     //headers: { "content-type": "application/x-www-form-urlencoded" },
-    url: "http://mockbin.com/request1",
+    url: data.postDestination,
     method: "POST",
     body: "Test for post request"
   },
@@ -41,7 +44,7 @@ request.post(
     if (error) {
       return error;
     }
-
+    console.log('Data', body);
     console.log('Post response', response.statusCode);
   }
 );

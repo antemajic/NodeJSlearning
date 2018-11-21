@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "lint": "eslint",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./src/index.js",
     "start:dev1": "set NODE_ENV=dev1&& node ./src/index.js",

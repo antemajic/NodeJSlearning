@@ -1,14 +1,8 @@
 {
-  "Movies": {
-    "link": "http://www.o2mdbapi.com/?t=harry+potter&apikey=8bdbc1a5"
-  },
-  "dev1": {
-    "maxAttempts": 5,
-    "retryDelay": 2000
-  },
-
-  "test1": {
-    "maxAttempts": 3,
-    "retryDelay": 3000
+  "configuration": {
+      "link": "http://www.omdb2api.com/?t=harry+potter&apikey=8bdbc1a5",
+      "postDestination": "http://mockbin.com/request1",
+      "maxAttempts": 3,
+      "retryDelay": 10000
   }
 }
